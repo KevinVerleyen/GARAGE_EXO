@@ -50,6 +50,7 @@ module.exports = (sequelize, DataTypes) => {
           "Citadine",
           "Utilitaire",
           "Monospace",
+          "Suv",
           "Autre"
         ),
         defaultValue: "Autre",
