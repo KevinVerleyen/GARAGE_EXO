@@ -1,4 +1,5 @@
 const express = require("express");
+const router = require("./routers");
 
 // Importation des cors
 const cors = require("cors");
@@ -16,16 +17,18 @@ const { PORT } = process.env; //!  {} pour destructurer l'objet process.env et r
 const db = require("./models");
 
 db.sequelize
-  .sync({ force: process.env.NODE_ENV === "development" })
+  .sync({ force: false })
   .then(() => {
     console.log("Db sync 🔄");
-    if (process.env.NODE_ENV === "development") {
-      require("./utils/init")();
-    }
+    // if (process.env.NODE_ENV === "development") {
+    //   require("./utils/init")();
+    // }
   })
   .catch((error) => {
     console.log(`Erreur de synchonisation à la DB ❌, ${error}`);
   });
+
+app.use("/api", router);
 
 app.listen(PORT, () => {
   console.log(`Serveur is running on http://localhost: ${PORT} 🟢 `);
