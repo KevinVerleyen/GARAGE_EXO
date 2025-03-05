@@ -6,10 +6,10 @@ const clientController = require("../controllers/client.controller");
 // router.route("/").get().post();
 // router.route("/:id").get().post().patch()
 
-router.get("", () => {});
+router.get("", clientController.findAll);
 router.post("", clientController.create);
-router.get("/:id", () => {});
-router.put("/:id", () => {});
-router.delete("/:id", () => {});
+router.get("/:id", clientController.findOne);
+router.put("/:id", clientController.update);
+router.delete("/:id", clientController.delete);
 
 module.exports = router;
